@@ -1,0 +1,17 @@
+{
+    "name": "pensador",
+    "short_name": "LPT",
+    "start_url": "/index.php",
+    "background_color": "#6777ef",
+    "description": "aplicativo de frases e versos",
+    "display": "fullscreen",
+    "theme_color": "#6777ef",
+    "icons": [
+        {
+            "src": "logo.PNG",
+            "sizes": "512x512",
+            "type": "mobile/images/web.png",
+            "purpose": "any maskable"
+        }
+    ]
+}
