@@ -13,6 +13,12 @@ class Pensaodor extends Controller {
         $categorias = categoria::all();
         return view( 'welcome', compact( 'categorias' ) );
     }
+        public function dashboard(){
+            $frases = frase::all();
+            $categorias = categoria::all();
+            return view('dashboard',compact('frases','categorias'));
+        }
+
 
     public function menushare(){
         return view('menu-share');
