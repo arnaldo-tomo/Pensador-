@@ -2,18 +2,14 @@
 
 use App\Http\Controllers\Pensaodor;
 use App\Http\Controllers\ProfileController;
-use App\Models\categoria;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[Pensaodor::class,'welcome']);
+Route::get('dashboard',[Pensaodor::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('frase{id}', [Pensaodor::class, 'verfrase']);
 Route::get('menushare', [Pensaodor::class, 'menushare'])->name('menushare');
 Route::get('menu', [Pensaodor::class, 'menu'])->name('menu');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
