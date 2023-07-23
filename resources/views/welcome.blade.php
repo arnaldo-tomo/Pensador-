@@ -83,7 +83,7 @@
             </div>
             <div class="page-title-clear"></div>
              <button class="btn btn-primary btn-sn" id="install-button" style="display: none;">Instalar o App</button>
-            
+
 
             @foreach ($categorias as $item)
                 <a href="frase{{ $item->id }}" class="card card-style">
@@ -110,8 +110,8 @@
         <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-load="{{ route('menushare') }}" data-menu-height="370"></div>
 
         {{-- <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html"  data-menu-height="480"></div> --}}
-        
-        
+
+
         <div id="menu-install-pwa-android" class="menu menu-box-bottom rounded-m">
             <img class="mx-auto mt-4 rounded-m" src="apple-touch-icon.png" alt="img" width="90">
             <h4 class="text-center mt-4 mb-2">Pensador no seu ecrã inicial</h4>
