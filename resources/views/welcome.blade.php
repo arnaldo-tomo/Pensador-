@@ -104,13 +104,13 @@
 
         </div>
 
-           <button class="btn btn-primary btn-sn" id="install-button" style="display: none;">Instalar o App</button>
         {{-- <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-load="{{ route('menu') }}" data-menu-width="280"  data-menu-active="nav-pages"></div> --}}
-
+        
         <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-load="{{ route('menushare') }}" data-menu-height="370"></div>
-
+        
         {{-- <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html"  data-menu-height="480"></div> --}}
-
+        
+        <button class="btn btn-primary btn-sn" id="install-button" style="display: none;">Instalar o App</button>
 
         <div id="menu-install-pwa-android" class="menu menu-box-bottom rounded-m">
             <img class="mx-auto mt-4 rounded-m" src="apple-touch-icon.png" alt="img" width="90">
