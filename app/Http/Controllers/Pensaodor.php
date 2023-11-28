@@ -10,21 +10,23 @@ use Illuminate\Support\Facades\DB;
 
 class Pensaodor extends Controller {
     public function welcome() {
-        $categorias = categoria::all();
+        $categorias = categoria::with( 'frases' )->get();
+
         return view( 'welcome', compact( 'categorias' ) );
     }
-        public function dashboard(){
-            $frases = frase::all();
-            $categorias = categoria::all();
-            return view('dashboard',compact('frases','categorias'));
-        }
 
-
-    public function menushare(){
-        return view('menu-share');
+    public function dashboard() {
+        $frases = frase::all();
+        $categorias = categoria::all();
+        return view( 'dashboard', compact( 'frases', 'categorias' ) );
     }
-    public function menu(){
-        return view('menu');
+
+    public function menushare() {
+        return view( 'menu-share' );
+    }
+
+    public function menu() {
+        return view( 'menu' );
     }
 
     public function publicar() {
@@ -54,16 +56,16 @@ class Pensaodor extends Controller {
         // Localiza a categoria pelo ID fornecido e atribui à variável `$categoria`.
         $categoria = categoria::find( $id );
 
-        //  Remove todas as associações (relacionamentos) entre a categoria e suas frases relacionadas na tabela intermediária.
+        //  Remove todas as associações ( relacionamentos ) entre a categoria e suas frases relacionadas na tabela intermediária.
         $categoria->frases()->detach();
 
-        // Exclui o registro da categoria na tabela "categorias".
+        // Exclui o registro da categoria na tabela 'categorias'.
         $categoria->delete();
 
         // Confirma a transação, ou seja, todas as alterações realizadas no banco de dados são efetivadas.
         DB::commit();
 
-        return back()->with( 'toast', ' Categotia '.$categoria->nome.' Eliminada');
+        return back()->with( 'toast', ' Categotia '.$categoria->nome.' Eliminada' );
     }
 
     public function conectar( $id ) {
@@ -78,7 +80,7 @@ class Pensaodor extends Controller {
         $categoria_frase->categoria_id = $request->categoria_id;
         $categoria_frase->frase_id = $frases->id;
         $categoria_frase->save();
-       return back()->with( 'toast', ' Frase Publicada' );
+        return back()->with( 'toast', ' Frase Publicada' );
 
     }
 
@@ -87,19 +89,20 @@ class Pensaodor extends Controller {
         return view( 'frases', compact( 'categoria' ) );
     }
 
-    public function editarfrase(Request $request,$id){
+    public function editarfrase( Request $request, $id ) {
 
-        $editarfrase = frase::find($id);
+        $editarfrase = frase::find( $id );
         $editarfrase->nome = $request->nome;
         $editarfrase->update();
-        return back()->with( 'toast', ' Frase: '.$editarfrase->nome.' Actualizada');
+        return back()->with( 'toast', ' Frase: '.$editarfrase->nome.' Actualizada' );
     }
-    public function deletefrase($id){
 
-        $deletefrase = frase::find($id);
+    public function deletefrase( $id ) {
+
+        $deletefrase = frase::find( $id );
         $deletefrase->categoria()->detach();
         $deletefrase->delete();
-        return back()->with( 'toast', ' Frase: '.$deletefrase->nome.' Eliminada');
+        return back()->with( 'toast', ' Frase: '.$deletefrase->nome.' Eliminada' );
 
     }
 }
